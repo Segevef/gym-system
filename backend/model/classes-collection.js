@@ -13,6 +13,7 @@ const classGYMSchma = new mongoose.Schema({
   isAvailable: { type: Boolean, default: true },
   usersIds: { type: [String], default: [] },
   waitingList: { type: [String], default: [] }, 
+  extraInfo: {type: String, defualt: null},
   classImage: { type: String, default: null }
 });
 

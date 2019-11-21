@@ -13,6 +13,8 @@ import { withRouter } from 'react-router-dom';
 import { UserContext } from '../providers/User.provider';
 import { UserServiceContext } from '../providers/UserService.provider';
 import { ClassService } from '../service/class-service';
+import ButtonBase from '@material-ui/core/ButtonBase';
+
 
 const useStyles = makeStyles({
   card: {
@@ -35,6 +37,7 @@ function ClassCard({
                      currentParticipants,
                      classId,
                      instructor,
+                     extraInfo,
                      currentPage,
                      history
                    }) {
@@ -82,15 +85,34 @@ function ClassCard({
     }
   };
 
+  const onClassClicked = () => {
+    
+      return history.push({
+        pathname: `/class-details/${classId}`,
+        state: { name: name,
+                description: description,
+                price: price,
+                duration: duration,
+                maxParticipants: maxParticipants,
+                currentParticipants: currentParticipants,
+                classId: classId,
+                instructor: instructor,
+                extraInfo: extraInfo
+              }
+      })  
+  }
+
 
   return (
     <Card className={styleClasses.card}>
+      <ButtonBase onClick = {onClassClicked}>
       <CardActionArea>
         <CardMedia
           className={styleClasses.media}
           image={defaultCardImage}
           title="Contemplative Reptile"
         />
+        
         <CardContent>
           <CardList
             name={name}
@@ -105,6 +127,7 @@ function ClassCard({
           />
         </CardContent>
       </CardActionArea>
+      </ButtonBase>
       <CardActions>
         <Button
           size="small"

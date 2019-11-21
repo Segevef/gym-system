@@ -42,6 +42,7 @@ function MyClassesPage() {
               maxParticipants={gymClass.maxParticipants}
               currentParticipants={gymClass.usersIds}
               instructor={gymClass.instructorName}
+              extraInfo={gymClass.extraInfo}
               classId={gymClass._id}
               key={gymClass._id}
               currentPage={currentPage}
